@@ -60,7 +60,9 @@ router.get('/tee/:tee_title', function(req, res){
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
-
+app.get('/', function(req, res){
+	res.status(200).send("Indexy!");
+});
 // START THE SERVER
 // =============================================================================
 app.listen(port);
