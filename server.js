@@ -38,22 +38,23 @@ router.get('/tee/:tee_title', function(req, res){
 		var sold = $('h4.clean.visible-sm span.amount-ordered').text();
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
-		console.log(back_img_url);
-		if($('body.page__errors_error_404')){
+		if(err){
 			res.status(400).json({
-				code: 400,
-				error: "Unable to find that Tee on teespring."
+				message: "There seems to have been an error, double check your request."
 			});
 		}
-		res.status(200).json({
-			tee: req.params.tee_title,
-			images:{ front: front_img_url,
-					 back: back_img_url	
-					},
-			total_sold: sold,
-			goal_amount: goal,
-			goal_date: goal_date
-		});
+		else {
+			res.status(200).json({
+				tee: req.params.tee_title,
+				url: url,
+				images:{ front: front_img_url,
+						 back: back_img_url	
+						},
+				total_sold: sold,
+				goal_amount: goal,
+				goal_date: goal_date
+			});
+		}
 	});
 });
 
@@ -66,4 +67,4 @@ app.get('/', function(req, res){
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('The unicorns are running wild on port &d!', port);
+console.log('The unicorns are running wild on port %d!', port);
