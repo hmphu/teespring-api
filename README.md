@@ -1,18 +1,21 @@
-# Building a RESTful API in Node and Express
+[Unofficial] Teespring API
+===========================
 
-Using the new Express 4.0 Router to build an API
+If you want a really simple way to access your teespring tees from your own apps.
 
-[Read the tutorial](http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4)
+##api/[tee]
+* Returns JSON with everything you want!
+```
+{
+tee: TEE-YOU-CALLED,
+-images: {
+front: MOST-CURRENT-FRONT-IMAGE,
+back: MOST-CURRENT-BACK-IMAGE
+},
+total_sold: INT-VAL,
+goal_amount: INT-VAL,
+goal_date: END-GOAL-DATE
+}
+```
 
-## Requirements
-
-- Node and npm
-
-## Installation
-
-- Clone the repo: `git clone git@github.com:scotch-io/node-api`
-- Install dependencies: `npm install`
-- Start the server: `node server.js`
-
-## Testing the API
-Test your API using [Postman](https://chrome.google.com/webstore/detail/postman-rest-client-packa/fhbjgbiflinjbdggehcddcbncdddomop)
+Built with ♥ by Sam Couch.
