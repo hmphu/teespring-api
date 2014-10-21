@@ -34,15 +34,21 @@ router.get('/tee/:tee_title', function(req, res){
 	request(url, function(err, resp, body){
 		var $ = cheerio.load(body);
 		var front_img_url = $('img.main_campaign_image').attr('src');
+		var back_img_url = $('img.back').attr('src');
 		var sold = $('h4.clean.visible-sm span.amount-ordered').text();
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
-		// if($('body.page__errors_error_404'))
-		// 	err.push('Looks like that shirt doesn\'t exist!');
+		console.log(back_img_url);
+		if($('body.page__errors_error_404')){
+			res.status(400).json({
+				code: 400,
+				error: "Unable to find that Tee on teespring."
+			});
+		}
 		res.status(200).json({
 			tee: req.params.tee_title,
 			images:{ front: front_img_url,
-					 back: 'none yet'
+					 back: back_img_url	
 					},
 			total_sold: sold,
 			goal_amount: goal,
