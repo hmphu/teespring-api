@@ -3,9 +3,9 @@
 
 If you want a really simple way to access your teespring tees from your own apps.
 
-##teespring-api.cloudapp.net/[tee]
+##/[tee]
 For example: [TUDEV](http://teespring-api.cloudapp.net/tudev)
-* Returns JSON with everything you want!
+Returns JSON with everything you want!
 ```
 {  
    "tee":"tudev",
