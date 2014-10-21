@@ -18,17 +18,7 @@ var port     = process.env.PORT || 3000;
 
 // ROUTES FOR OUR API
 // =============================================================================
-
-// create our router
-var router = express.Router();
-
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-	res.json({ message: '[unofficial] Teespring API' });	
-});
-
-// ----------------------------------------------------
-router.get('/tee/:tee_title', function(req, res){
+app.get('/:tee_title', function(req, res){
 	var url = "http://teespring.com/" + req.params.tee_title;
 	var err = [];
 	request(url, function(err, resp, body){
@@ -58,12 +48,10 @@ router.get('/tee/:tee_title', function(req, res){
 	});
 });
 
-
-// REGISTER OUR ROUTES -------------------------------
-app.use('/api', router);
 app.get('/', function(req, res){
 	res.status(200).send("Indexy!");
 });
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);
