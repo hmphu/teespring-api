@@ -28,6 +28,8 @@ app.get('/:tee_title', function(req, res){
 		var sold = $('h4.clean.visible-sm span.amount-ordered').text();
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
+		var details = $('div.description').text();
+		console.log(details);
 		if(err){
 			res.status(400).json({
 				message: "There seems to have been an error, double check your request."
@@ -42,7 +44,8 @@ app.get('/:tee_title', function(req, res){
 						},
 				total_sold: sold,
 				goal_amount: goal,
-				goal_date: goal_date
+				goal_date: goal_date,
+				details: details
 			});
 		}
 	});
