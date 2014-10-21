@@ -28,7 +28,7 @@ app.get('/:tee_title', function(req, res){
 		var sold = $('h4.clean.visible-sm span.amount-ordered').text();
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
-		var details = $('div.description').text();
+		var details = $('div.description').text().trim();
 		console.log(details);
 		if(err){
 			res.status(400).json({
