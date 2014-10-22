@@ -52,7 +52,7 @@ app.get('/:tee_title', function(req, res){
 });
 
 app.get('/', function(req, res){
-	res.status(200).send("Welcome to the (unofficial) Teespring API! hit /your-favorite-tee to get started. Try <a href=\"/tudev\">this example</a>.");
+	res.status(200).send("Welcome to the (unofficial) Teespring API! hit /your-favorite-tee to get started. Try <a href=\"/tudev\">this example</a>.<br /> Check out the documentation on our <a href=\"https://github.com/samuelcouch/teespring-api\">Github</a>");
 });
 
 // START THE SERVER
