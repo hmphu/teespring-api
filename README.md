@@ -16,7 +16,8 @@ Returns JSON with everything you want!
    },
    "total_sold":"5",
    "goal_amount":"25",
-   "goal_date":"2014-11-12T04:00:00Z"
+   "goal_date":"2014-11-12T04:00:00Z",
+   "details":"Temple Dev is Temple University's student-run software engineering organization."
 }
 ```
 
