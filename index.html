@@ -26,10 +26,10 @@
 
 <p>To use the API is really easy! Currently v.1 supports 1 endpoint. This will gather all information about a Teespring campaign.</p>
 <h3>HTTP Request</h3>
-<strong>GET</strong> <code>http://teespring-api.cloudapp.net/[campaign-name]</code>
+<strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/[campaign-name]</code>
 <p>Right now, the only query parameter supported are teespring campaign names, just throw it at the end and you're good to go!</p>
 <p>Expected output:</p>
-<code>
+<pre><code>
   {  
    "tee":"[campaign-name]",
    "url":"[campaign-url]",
@@ -42,7 +42,7 @@
    "goal_date":"[goal-end-date]",
    "details":"[campaign-details]"
 }
-</code>
+</code></pre>
 <p>Here is a simple Node.JS example:</p>
 
 <pre><code>
