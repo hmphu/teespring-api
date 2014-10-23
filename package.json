@@ -1,5 +1,7 @@
 {
-  "name": "node-api",
+  "name": "teespring-api",
+  "version": "0.0.1",
+  "private": true,
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.0.1",
