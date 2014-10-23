@@ -41,7 +41,7 @@ app.get('/v01/:tee_title', function(req, res){
 		}
 		else if(err){
 			res.status(500).json({
-				status: "danger"
+				status: "danger",
 				message: "There seems to be a problem, sorry about that."
 			});
 		}
