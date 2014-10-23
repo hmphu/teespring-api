@@ -33,9 +33,15 @@ app.get('/v01/:tee_title', function(req, res){
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
 		var details = $('div.description.hidden-sm.hidden-xs').text().trim().replace(/[^\u0000-\u007F]/g, ' ');
-		if(err){
+		if($('body.page__errors_error_404').length){
 			res.status(400).json({
-				message: "There seems to have been an error, double check your request."
+				status: "error",
+				message: "Looks like the campaign you requested may not exists..."
+			});
+		}
+		if(err){
+			res.status(500).json({
+				message: "There seems to have been an error, sorry about that."
 			});
 		}
 		else {
