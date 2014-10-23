@@ -31,8 +31,9 @@
 <p>Right now, the only query parameter supported are teespring campaign names, just throw it at the end and you're good to go!</p>
 <p>Expected output:</p>
 <pre><code>
-  {  
-   "tee":"[campaign-name]",
+{  
+   "status":"ok",
+   "tee":"campaign-name]",
    "url":"[campaign-url]",
    "images":{  
       "front":"[front-image-url",
@@ -42,6 +43,13 @@
    "goal_amount":"[goal-amount]",
    "goal_date":"[goal-end-date]",
    "details":"[campaign-details]"
+}
+</code></pre>
+<p>If there's a problem, we'll also let you know</p>
+<pre><code>
+{  
+   "status":"error",
+   "message":"Looks like the campaign you requested may not exists..."
 }
 </code></pre>
 <p>Here is a simple Node.JS example:</p>

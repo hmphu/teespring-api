@@ -39,13 +39,15 @@ app.get('/v01/:tee_title', function(req, res){
 				message: "Looks like the campaign you requested may not exists..."
 			});
 		}
-		if(err){
+		else if(err){
 			res.status(500).json({
-				message: "There seems to have been an error, sorry about that."
+				status: "danger"
+				message: "There seems to be a problem, sorry about that."
 			});
 		}
 		else {
 			res.status(200).json({
+				status: 'ok', 
 				tee: req.params.tee_title,
 				url: url,
 				images:{ front: front_img_url,
