@@ -8,6 +8,7 @@ For example: http://teespring-api.cloudapp.net/[TUDEV](http://teespring-api.clou
 Returns JSON with everything you want!
 ```
 {  
+   "status":"ok",
    "tee":"tudev",
    "url":"http://teespring.com/tudev",
    "images":{  
