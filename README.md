@@ -1,10 +1,10 @@
 [Unofficial] Teespring API
 ===========================
 
-If you want a really simple way to access your teespring tees from your own apps.
+If you want a really simple way to access Teespring campaigns from your own apps.
 
-##/[tee]
-For example: [TUDEV](http://teespring-api.cloudapp.net/tudev)
+##/v01/[campaign-name]
+For example: http://teespring-api.cloudapp.net/[TUDEV](http://teespring-api.cloudapp.net/v01/tudev)
 Returns JSON with everything you want!
 ```
 {  
@@ -22,3 +22,5 @@ Returns JSON with everything you want!
 ```
 
 Built with ♥ by Sam Couch.
+
+####Not affiliated with [Teespring](teespring.com), but they're awesome. Check them out!
