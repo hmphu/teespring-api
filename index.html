@@ -26,12 +26,13 @@
 
 <p>To use the API is really easy! Currently v.1 supports 1 endpoint. This will gather all information about a Teespring campaign.</p>
 <h3>HTTP Request</h3>
-<strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/[campaign-name]</code>
+<strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/v01/[campaign-name]</code>
 <p>Right now, the only query parameter supported are teespring campaign names, just throw it at the end and you're good to go!</p>
 <p>Expected output:</p>
 <pre><code>
-  {  
-   "tee":"[campaign-name]",
+{  
+   "status":"ok",
+   "tee":"campaign-name]",
    "url":"[campaign-url]",
    "images":{  
       "front":"[front-image-url",
@@ -43,11 +44,18 @@
    "details":"[campaign-details]"
 }
 </code></pre>
+<p>If there's a problem, we'll also let you know</p>
+<pre><code>
+{  
+   "status":"error",
+   "message":"Looks like the campaign you requested may not exists..."
+}
+</code></pre>
 <p>Here is a simple Node.JS example:</p>
 
 <pre><code>
 var request = require('request');
-request('teespring-api.cloudapp.net/tudev', function (error, response, body) {
+request('teespring-api.cloudapp.net/v01/tudev', function (error, response, body) {
   if (!error && response.statusCode == 200) {
     JSON.parse(body);
   }
@@ -57,6 +65,7 @@ request('teespring-api.cloudapp.net/tudev', function (error, response, body) {
       <footer>
         <p>This project is maintained by <a href="https://github.com/samuelcouch">samuelcouch</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p>Not affiliated with <a href="http://www.teespring.com">Teespring</a>. But they're awesome, check them out!</p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
