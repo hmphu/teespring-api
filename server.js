@@ -5,6 +5,7 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var logger = require('morgan');
+var path    = require('path');
 var express    = require('express');
 var bodyParser = require('body-parser');
 var app        = express();
@@ -13,12 +14,13 @@ var app        = express();
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 var port     = process.env.PORT || 3000;
 
 // ROUTES FOR OUR API
 // =============================================================================
-app.get('/:tee_title', function(req, res){
+app.get('/v01/:tee_title', function(req, res){
 	var url = "http://teespring.com/" + req.params.tee_title;
 	var err = [];
 	request(url, function(err, resp, body){
@@ -29,7 +31,6 @@ app.get('/:tee_title', function(req, res){
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
 		var details = $('div.description.hidden-sm.hidden-xs').text().trim();
-		console.log(details);
 		if(err){
 			res.status(400).json({
 				message: "There seems to have been an error, double check your request."
@@ -52,7 +53,7 @@ app.get('/:tee_title', function(req, res){
 });
 
 app.get('/', function(req, res){
-	res.status(200).send("Welcome to the (unofficial) Teespring API! hit /your-favorite-tee to get started. Try <a href=\"/tudev\">this example</a>.<br /> Check out the documentation on our <a href=\"https://github.com/samuelcouch/teespring-api\">Github</a>");
+	res.status(200).sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // START THE SERVER
