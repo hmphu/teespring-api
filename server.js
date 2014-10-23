@@ -32,7 +32,7 @@ app.get('/v01/:tee_title', function(req, res){
 		var sold = $('h4.clean.visible-sm span.amount-ordered').text();
 		var goal = $('h4.clean.visible-sm span.goal').text();
 		var goal_date = $('div.time-left').attr('title');
-		var details = $('div.description.hidden-sm.hidden-xs').text().trim();
+		var details = $('div.description.hidden-sm.hidden-xs').text().trim().replace(/[^\u0000-\u007F]/g, ' ');
 		if(err){
 			res.status(400).json({
 				message: "There seems to have been an error, double check your request."
