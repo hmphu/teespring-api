@@ -19,13 +19,31 @@
         <p>[Unofficial] API for Teespring</p>
 
         <p class="view"><a href="https://github.com/samuelcouch/teespring-api">View the Project on GitHub <small>samuelcouch/teespring-api</small></a></p>
-        <p class="view"><a href="http://teespring.com/"><small>Visit</small> Teespring</a></p>
+        <p class="view"><a href="http://teespring.com/">Visit Teespring</a></p>
       </header>
       <section>
         <h3>Getting Started:</h3>
 
 <p>To use the API is really easy! Currently v.1 supports 1 endpoint. This will gather all information about a Teespring campaign.</p>
-<p>Here is a simple request Node.JS example:</p>
+<h3>HTTP Request</h3>
+<strong>GET</strong> <code>http://teespring-api.cloudapp.net/[campaign-name]</code>
+<p>Right now, the only query parameter supported are teespring campaign names, just throw it at the end and you're good to go!</p>
+<p>Expected output:</p>
+<code>
+  {  
+   "tee":"[campaign-name]",
+   "url":"[campaign-url]",
+   "images":{  
+      "front":"[front-image-url",
+      "back":"[back-image-url]"
+   },
+   "total_sold":"[amount-currently-sold",
+   "goal_amount":"[goal-amount]",
+   "goal_date":"[goal-end-date]",
+   "details":"[campaign-details]"
+}
+</code>
+<p>Here is a simple Node.JS example:</p>
 
 <pre><code>
 var request = require('request');
