@@ -6,6 +6,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var logger = require('morgan');
 var path    = require('path');
+var favicon = require('serve-favicon');
 var express    = require('express');
 var bodyParser = require('body-parser');
 var app        = express();
@@ -15,6 +16,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 var port     = process.env.PORT || 3000;
 
