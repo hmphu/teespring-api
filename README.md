@@ -4,7 +4,7 @@
 If you want a really simple way to access Teespring campaigns from your own apps.
 
 ##/v01/[campaign-name]
-For example: http://teespring-api.cloudapp.net/[TUDEV](http://teespring-api.cloudapp.net/v01/tudev)
+For example: http://teespring-api.cloudapp.net/v01/tudev
 Returns JSON with everything you want!
 ```
 {  
@@ -24,4 +24,4 @@ Returns JSON with everything you want!
 
 Built with ♥ by Sam Couch.
 
-####Not affiliated with [Teespring](teespring.com), but they're awesome. Check them out!
+####Not affiliated with [Teespring](http://www.teespring.com), but they're awesome. Check them out!
