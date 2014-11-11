@@ -58,6 +58,51 @@
    query: "sample search query",
 }
 </code></pre>
+Each item in hits returns the following:
+<pre><code>
+{
+  id: ,
+  name: ,
+  description: ,
+  url: ,
+  tippingpoint: ,
+  ordered: ,
+  front_text: ,
+  back_text: ,
+  endcost: ,
+  enddate: ,
+  amount_ordered: ,
+  primary_pic_url: ,
+  secondary_pic_url: ,
+  user_id: ,
+  active_to_i: ,
+  tag_names: ,
+  publicly_searchable: ,
+  tags: [ ],
+  objectID: ,
+  highlightResult: {
+    name: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    },
+    description: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    },
+    url: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    },
+    tag_names: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    }
+  }
+}</code></pre>
 
 <p>If there's a problem, we'll also let you know</p>
 <pre><code>
