@@ -3,8 +3,11 @@
 
 If you want a really simple way to access Teespring campaigns from your own apps.
 
-##/v01/[campaign-name]
+
+
+####/v01/[campaign-name]
 For example: http://teespring-api.cloudapp.net/v01/tudev
+
 Returns JSON with everything you want!
 ```
 {  
@@ -21,6 +24,21 @@ Returns JSON with everything you want!
    "details":"Temple Dev is Temple University's student-run software engineering organization."
 }
 ```
+
+####/v01/search/[any search query]
+For example: http://teespring-api.cloudapp.net/v01/search/tudev
+
+Returns JSON with hits from the Teespring search*. Each hits[] will contain individual JSON objects for each resulting tee.
+```
+{
+   hits: [ ],
+   nbHits: 0,
+   page: 0,
+   nbPages: 0,
+   query: "sample search query",
+}
+```
+*Information about how this was achieved can be found [here](https://medium.com/@SamuelCouch/hidden-in-plain-sign-221ebc7cf47a).
 
 Built with ♥ by Sam Couch.
 
