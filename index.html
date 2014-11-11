@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <title>Teespring-api by samuelcouch</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
@@ -27,7 +28,7 @@
 <p>To use the API is really easy! Currently v.1 supports 1 endpoint. This will gather all information about a Teespring campaign.</p>
 <h3>HTTP Request</h3>
 <strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/v01/[campaign-name]</code>
-<p>Right now, the only query parameter supported are teespring campaign names, just throw it at the end and you're good to go!</p>
+<p>This will return the available information about a specific campaign.</p>
 <p>Expected output:</p>
 <pre><code>
 {  
@@ -44,6 +45,20 @@
    "details":"[campaign-details]"
 }
 </code></pre>
+
+<strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/v01/search/[search query]</code>
+<p>This will return an array of JSON objects for a given search query.</p>
+<p>Expected output:</p>
+<pre><code>
+{
+   hits: [ ],
+   nbHits: 0,
+   page: 0,
+   nbPages: 0,
+   query: "sample search query",
+}
+</code></pre>
+
 <p>If there's a problem, we'll also let you know</p>
 <pre><code>
 {  
