@@ -26,3 +26,9 @@ node_modules
 
 # Other
 *.swp
+
+.vagrant
+Vagrantfile
+*.rdb
+
+*.env
