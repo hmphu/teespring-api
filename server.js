@@ -4,19 +4,14 @@
 var dotenv = require('dotenv');
 dotenv.load();
 var request = require('request');
-var cheerio = require('cheerio');
 var logger = require('morgan');
 var path    = require('path');
 var favicon = require('serve-favicon');
 var express    = require('express');
 var bodyParser = require('body-parser');
-var Qs = require('qs');
 var app        = express();
 
 var springSearch = require('./utils').springSearch;
-
-//var client = require('redis').createClient();
-//var limiter = require('express-limiter')(app, client);
 
 // configure app
 app.use(logger('dev'));
