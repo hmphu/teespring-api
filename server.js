@@ -35,6 +35,41 @@ app.get('/v01/:campaign', function(req, res){
 	query = query.toLowerCase();
 	springSearch(query, 1, function(result){
 		if(query === result.hits[0].url){
+			var cleaned = {
+				status: "ok",
+				tee: result.hits[0].url,
+				url: "http://teespring.com/"+result.hits[0].url,
+				images: {
+					front: result.hits[0].primary_pic_url,
+					back: result.hits[0].secondary_pic_url
+				},
+				toal_sold: result.hits[0].ordered,
+				goal: result.hits[0].tippingpoint,
+				goal_date: result.hits[0].enddate,
+				details: result.hits[0].description.trim().replace(/[^\u0000-\u007F]/g, ' ')
+			}
+			res.status(200).json(cleaned);
+		}
+		else if(query == 500){
+			res.status(500).json({
+				status: 500,
+				message: "Looks like something went wrong on our end, sorry about that!"
+			});
+		}
+		else{
+			res.status(400).json({
+				status: 400,
+				message: "Looks like that campaign doesn\'t exist. Sorry!"
+			});
+		}
+	});
+});
+
+app.get('/v02/:campaign', function(req, res){
+	var query = req.params.campaign;
+	query = query.toLowerCase();
+	springSearch(query, 1, function(result){
+		if(query === result.hits[0].url){
 			result.hits[0].description = result.hits[0].description.trim().replace(/[^\u0000-\u007F]/g, ' ');
 			result.hits[0].status = "ok";
 			res.status(200).json(result.hits[0]);
@@ -55,6 +90,23 @@ app.get('/v01/:campaign', function(req, res){
 });
 
 app.get('/v01/search/:campaign_search', function(req, res){
+	var query = req.params.campaign_search;
+	springSearch(query, 10000, function(result){
+		if(result == 500){
+			res.status(500).json({
+				status: 500,
+				message: "Looks like something went wrong on our end, sorry about that!"
+			});
+		}
+		else{
+			result.hits.status = 200;
+			result.hits.message = "OK";
+			res.status(200).json(result);
+		}
+	});
+});
+
+app.get('/v02/search/:campaign_search', function(req, res){
 	var query = req.params.campaign_search;
 	springSearch(query, 10000, function(result){
 		if(result == 500){
