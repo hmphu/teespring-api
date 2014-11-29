@@ -6,6 +6,7 @@ dotenv.load();
 var request = require('request');
 var logger = require('morgan');
 var path    = require('path');
+var html_strip = require('htmlstrip-native');
 var favicon = require('serve-favicon');
 var express    = require('express');
 var bodyParser = require('body-parser');
@@ -30,6 +31,12 @@ app.get('/v01/:campaign', function(req, res){
 	query = query.toLowerCase();
 	springSearch(query, 1, function(result){
 		if(query === result.hits[0].url){
+			result.hits[0].description = result.hits[0].description.trim().replace(/[^\u0000-\u007F]/g, ' ');
+			var details = html_strip.html_strip(result.hits[0].description, {
+					include_script : false,
+			        include_style : false,
+			        compact_whitespace : true
+				});
 			var cleaned = {
 				status: "ok",
 				tee: result.hits[0].url,
@@ -41,7 +48,7 @@ app.get('/v01/:campaign', function(req, res){
 				toal_sold: result.hits[0].ordered,
 				goal: result.hits[0].tippingpoint,
 				goal_date: result.hits[0].enddate,
-				details: result.hits[0].description.trim().replace(/[^\u0000-\u007F]/g, ' ')
+				details: details.trim()
 			}
 			res.status(200).json(cleaned);
 		}
