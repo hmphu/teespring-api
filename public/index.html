@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Teespring-api by samuelcouch</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Teespring-api</h1>
+        <p>[Unofficial] API for Teespring</p>
+
+        <p class="view"><a href="https://github.com/samuelcouch/teespring-api">View the Project on GitHub <small>samuelcouch/teespring-api</small></a></p>
+        <p class="view"><a href="http://teespring.com/">Visit Teespring</a></p>
+      </header>
+      <section>
+        <h3>Getting Started:</h3>
+
+<p>To use the API is really easy! Currently this supports 2 endpoints. A general lookup of a specific campaign as well as a full search of all campaigns.</p>
+<h3>HTTP Request</h3>
+<strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/v01/[campaign-name]</code>
+<p>This will return the available information about a specific campaign.</p>
+<p>Expected output:</p>
+<pre><code>
+{  
+   "status":"ok",
+   "tee":"campaign-name]",
+   "url":"[campaign-url]",
+   "images":{  
+      "front":"[front-image-url",
+      "back":"[back-image-url]"
+   },
+   "total_sold":"[amount-currently-sold",
+   "goal_amount":"[goal-amount]",
+   "goal_date":"[goal-end-date]",
+   "details":"[campaign-details]"
+}
+</code></pre>
+
+<strong>GET:  </strong> <code>http://teespring-api.cloudapp.net/v01/search/[search query]</code>
+<p>This will return an array of JSON objects for a given search query.</p>
+<p>Expected output:</p>
+<pre><code>
+{
+   hits: [ ],
+   nbHits: 0,
+   page: 0,
+   nbPages: 0,
+   query: "sample search query",
+}
+</code></pre>
+Each item in hits returns the following:
+<pre><code>
+{
+  id: ,
+  name: ,
+  description: ,
+  url: ,
+  tippingpoint: ,
+  ordered: ,
+  front_text: ,
+  back_text: ,
+  endcost: ,
+  enddate: ,
+  amount_ordered: ,
+  primary_pic_url: ,
+  secondary_pic_url: ,
+  user_id: ,
+  active_to_i: ,
+  tag_names: ,
+  publicly_searchable: ,
+  tags: [ ],
+  objectID: ,
+  highlightResult: {
+    name: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    },
+    description: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    },
+    url: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    },
+    tag_names: {
+      value: ,
+      matchLevel: ,
+      matchedWords: [ ]
+    }
+  }
+}</code></pre>
+
+<p>If there's a problem, we'll also let you know</p>
+<pre><code>
+{  
+   "status":"error",
+   "message":"Looks like the campaign you requested may not exists..."
+}
+</code></pre>
+<p>Here is a simple Node.JS example:</p>
+
+<pre><code>
+var request = require('request');
+request('teespring-api.cloudapp.net/v01/tudev', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    JSON.parse(body);
+  }
+})
+</code></pre>
+</section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/samuelcouch">samuelcouch</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p>Not affiliated with <a href="http://www.teespring.com">Teespring</a>. But they're awesome, check them out!</p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
